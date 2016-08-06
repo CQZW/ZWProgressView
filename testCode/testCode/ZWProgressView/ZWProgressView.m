@@ -56,20 +56,56 @@
     
     self.mTxtColor = self.mCompletedColorStart;//默认=mCompletedColorStart
 }
+-(id)init
+{
+    self = [super init];
+    if( self )
+    {
+        [self moreInit];
+    }
+    return self;
+}
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if( self )
+    {
+        [self moreInit];
+    }
+    return self;
+}
 -(id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    
+    if( self )
+    {
+        [self moreInit];
+    }
+ 
+    return self;
+}
+
+-(void)moreInit
+{
     [self cfgDefault];
     
-    _centerlabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, 20)];
+    _centerlabel = [[UILabel alloc]init];
+    _centerlabel.translatesAutoresizingMaskIntoConstraints = NO;
+    
     _centerlabel.font = [UIFont systemFontOfSize:15];//字体没有考虑 frame 很小的情况
     _centerlabel.textColor = self.mTxtColor;
     _centerlabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_centerlabel];
-    _centerlabel.center = CGPointMake(frame.size.width/2.0f, frame.size.height/2.0f);
     
-    return self;
+    //添加约束
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_centerlabel  attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_centerlabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_centerlabel attribute:NSLayoutAttributeWidth  relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_centerlabel attribute:NSLayoutAttributeHeight  relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
+        
 }
 
 -(void)setMProgress:(float)mProgress{

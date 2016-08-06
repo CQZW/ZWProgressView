@@ -15,29 +15,32 @@
 
 @implementation ViewController
 {
-    ZWProgressView* _xxxx;
-}
+ }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    _xxxx = [[ZWProgressView alloc]initWithFrame:CGRectMake(50, 50, 50, 50)];
     
-    _xxxx.mCompletedColorStart  =   [UIColor blueColor];
-    _xxxx.mCompletedColorEnd    =   [UIColor redColor];
+    self.mvvvvv.mCompletedColorStart  =   [UIColor blueColor];
+    self.mvvvvv.mCompletedColorEnd    =   [UIColor redColor];
 
-    [self.view addSubview:_xxxx];
     
     NSTimer* ttt = [NSTimer scheduledTimerWithTimeInterval:0.05f target:self selector:@selector(xxxx) userInfo:nil repeats:YES];
     [ttt fire];
 }
 -(void)xxxx
 {
-    _xxxx.mProgress += 0.01;
-    if( _xxxx.mProgress >= 1.0f )
-        _xxxx.mProgress = 0.0f;
+    if( self.mvvvvv.mProgress > 0.5f )
+        self.mvvvvv.mProgress += 0.001;
+    else
+        self.mvvvvv.mProgress += 0.01;
     
-    _xxxx.mCenterTxt = [NSString stringWithFormat:@"%.1f'", _xxxx.mProgress];
+        
+    if( self.mvvvvv.mProgress >= 1.0f )
+        self.mvvvvv.mProgress = 0.0f;
+    
+    self.mvvvvv.mCenterTxt = [NSString stringWithFormat:@"%.1f'", self.mvvvvv.mProgress];
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ZWProgressView;
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet ZWProgressView *mvvvvv;
 
 @end
 
